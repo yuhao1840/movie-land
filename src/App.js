@@ -23,6 +23,12 @@ const App = () => {
         searchMovies('Lord of The Rings');
     }, []); // only call it at start up
 
+    const handleKeypress = (e) => {
+        if(e.charCode === 13){ // RETURN Key
+            searchMovies(searchTerm);
+        }
+    };
+
     return (
         <div className="app">
             <h1>MovieLand</h1>
@@ -30,6 +36,7 @@ const App = () => {
                 <input 
                     placeholder="Search for movies"
                     value={searchTerm}
+                    onKeyPressCapture={handleKeypress}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <img 
